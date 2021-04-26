@@ -1,0 +1,15 @@
+{
+  "name": "wireframes",
+  "version": "1.0.0",
+  "description": "Static site generator https://www.11ty.io/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.10.0"
+  }
+}
