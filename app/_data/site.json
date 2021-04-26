@@ -1,4 +1,21 @@
 {
-    "title":"Example",
-    "feedback":"rob@swirrl.com"
+    "title": "Countries",
+    "feedback": "rob@swirrl.com",
+    "introText":"This page shows a simple table based on a sparql query to PMD",
+    "tableTitle":"Table title",
+    "tableHeaders":["Country","Capital"],
+    "apiRoot":"http://localhost:3001/v1/sparql/live?query=",
+    "sparqlConfig": {
+        "limit": "10000",
+        "prefix": "prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>",
+        "rdfsType": "http://muttnik.gov/ontologies/country/Country"
+
+    },
+    "structure": [{
+        "name": "country",
+        "uri": "http://www.w3.org/2000/01/rdf-schema#label"
+    },{
+        "name": "capital",
+        "uri": "http://muttnik.gov/ontologies/country/capital"
+    }]
 }
