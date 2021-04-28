@@ -22,7 +22,6 @@ constructQuery = () => {
     };
 
     for (j = 0; j < config.structure.length; j++) {
-
         if (config.structure[j].label != null) {
             whereRequest = whereRequest + "?row <" + config.structure[j].uri + "> ?" + config.structure[j].name + "URI . ?" + config.structure[j].name + "URI " + config.structure[j].label + " ?" + config.structure[j].name + " ."
         } else {

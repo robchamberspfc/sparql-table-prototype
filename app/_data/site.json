@@ -1,10 +1,10 @@
 {
     "title": "Animals",
     "feedback": "rob@swirrl.com",
-    "introText":"This page shows a simple table based on a sparql query to PMD",
-    "tableTitle":"Cats",
-    "tableHeaders":["Name","Colour", "Knows"],
-    "apiRoot":"http://localhost:3001/v1/sparql/live?query=",
+    "introText": "This page shows a simple table based on a SPARQL query to PMD",
+    "tableTitle": "Cats",
+    "tableHeaders": ["Name", "Colour", "Knows"],
+    "apiRoot": "http://localhost:3001/v1/sparql/live?query=",
     "sparqlConfig": {
         "limit": "1000",
         "prefix": "prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>",
@@ -14,11 +14,11 @@
         "name": "Name",
         "uri": "http://www.w3.org/2000/01/rdf-schema#label"
 
-    },{
+    }, {
         "name": "Colour",
         "uri": "http://muttnik.gov/ontologies/animals/colour",
-        "label" : "rdfs:label"
-    },{
+        "label": "rdfs:label"
+    }, {
         "name": "Knows",
         "uri": "http://xmlns.com/foaf/0.1/knows"
     }]
