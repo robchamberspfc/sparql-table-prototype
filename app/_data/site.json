@@ -2,24 +2,29 @@
     "title": "Animals",
     "feedback": "rob@swirrl.com",
     "introText": "This page shows a simple table based on a SPARQL query to PMD",
-    "tableTitle": "Cats",
-    "tableHeaders": ["Name", "Colour", "Knows"],
+    "tableTitle": "Fish",
+    "tableHeaders": ["Name", "Colour", "Knows", "Number of fins"],
     "apiRoot": "http://localhost:3001/v1/sparql/live?query=",
     "sparqlConfig": {
-        "limit": "1000",
+        "limit": "100",
         "prefix": "prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>",
-        "rdfsType": "http://muttnik.gov/ontologies/animals/cat"
+        "rdfsType": "http://muttnik.gov/ontologies/animals/fish"
     },
     "structure": [{
         "name": "Name",
         "uri": "http://www.w3.org/2000/01/rdf-schema#label"
-
     }, {
         "name": "Colour",
         "uri": "http://muttnik.gov/ontologies/animals/colour",
         "label": "rdfs:label"
     }, {
         "name": "Knows",
-        "uri": "http://xmlns.com/foaf/0.1/knows"
-    }]
+        "uri": "http://xmlns.com/foaf/0.1/knows",
+        "optional": "y"
+    }, {
+        "name": "Fins",
+        "uri": "http://muttnik.gov/ontologies/animals/numberOfFins",
+        "optional": "y"
+    }],
+    "filters":["Knows", "Colour", "Fins"]
 }

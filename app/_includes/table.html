@@ -2,6 +2,23 @@
     <div class="row">
         <div class="mt-4 col-md-12">
             <h2 id="title">{{ site.tableTitle }}</h2>
+            <div class="mt-4 input-group bg-light text-dark">
+
+                {% for filter in site.filters %}
+                <div class="col-lg-3 col-md-6">
+                    <strong>
+                        <label for="chooseAmbition">Filter by {{filter}}
+                            <select class="custom-select" name="choose{{filter}}" onchange="filterTable()"
+                                id="choose{{filter}}">
+                                <option selected>Select {{filter}}</option>
+                            </select>
+                        </label>
+                    </strong>
+                </div>
+                {% endfor %}
+
+
+            </div>
         </div>
     </div>
     <div class="row">
