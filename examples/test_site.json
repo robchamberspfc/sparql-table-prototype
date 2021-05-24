@@ -1,0 +1,21 @@
+{
+    "title": "Test",
+    "feedback": "rob@swirrl.com",
+    "introText": "This page shows a simple table based on a SPARQL query to PMD",
+    "tableTitle": "Test",
+    "tableHeaders": ["Bar","type"],
+    "apiRoot": "https://defra-staging.publishmydata.com/linked-data/sparql?query=",
+    "sparqlConfig": {
+        "limit": "1000",
+        "prefix": "prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>",
+        "rdfsType": "http://typ1"
+    },
+    "structure": [{
+        "name": "Bar",
+        "uri": "http://bar"
+    }, {
+        "name": "Type",
+        "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+    }],
+    "filters": ["Bar"]
+}

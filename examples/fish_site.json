@@ -1,18 +1,3 @@
-# sparql-table-prototype
-
-Used to create a table of data for a specific `rdfs:type` via a sparql query and present this on a page.
-
-[app/_data/site.json](app/_data/site.json) is used to define the contents of the table and build the query.
-
-Instructions to run
-`npm install`
-`eleventy --serve`
-
-Some example site.json files included in `/examples`
-
-## Example
-
-```
 {
     "title": "Animals",
     "feedback": "rob@swirrl.com",
@@ -43,25 +28,3 @@ Some example site.json files included in `/examples`
     }],
     "filters":["Knows", "Colour", "Fins"]
 }
-```
-
-## 'sparqlConfig' section
-Used to set some defaults and set the rdfs:type for the table.
-
-## Structure section
-name: gives the variable used in the sparql query
-uri: Unique identifier for this value
-label: Add the label type, e.g. `"rdfs:label"`
-optional: If can be missing values, include as optional with `y`
-
-```
-    "structure": [{
-        "name": "Colour",
-        "uri": "http://muttnik.gov/ontologies/animals/colour",
-        "label": "rdfs:label"
-        "optional": "y"
-    }]
-```
-
-## Filters section
-Leave blank or remove to exclude filters

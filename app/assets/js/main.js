@@ -18,6 +18,7 @@ constructQuery = () => {
     let selectRequest = "SELECT ";
     let whereRequest = "WHERE {?row ?p <" + config.sparqlConfig.rdfsType + "> .";
     let endRequest = "} ORDER BY asc (?" + config.structure[0].name + ") LIMIT " + config.sparqlConfig.limit;
+    // TODO: Add option to limit by graph?
 
     for (j = 0; j < config.structure.length; j++) {
         selectRequest = selectRequest + "?" + config.structure[j].name + " "
