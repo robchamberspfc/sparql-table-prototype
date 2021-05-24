@@ -47,8 +47,7 @@ constructQuery = () => {
         } else {
             filterWhere = " WHERE {?row ?p <" + config.sparqlConfig.rdfsType + "> ." + "?row <" + config.structure[index].uri + "> ?" + config.filters[j] + " ."
         }
-        console.log(encodeURIComponent(config.filters[j]))
-        filterRequest = encodeURIComponent(config.sparqlConfig.prefix + "SELECT DISTINCT ?" + encodeURIComponent(config.filters[j]) + filterWhere + "} LIMIT " + config.sparqlConfig.limit)
+        filterRequest = encodeURIComponent(config.sparqlConfig.prefix + "SELECT DISTINCT ?" + config.filters[j] + filterWhere + "} LIMIT " + config.sparqlConfig.limit)
         fetchFilters(filterRequest, config.filters[j])
     }
 

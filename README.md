@@ -4,7 +4,7 @@ Used to create a table of data for a specific `rdfs:type` via a sparql query and
 
 [app/_data/site.json](app/_data/site.json) is used to define the contents of the table and build the query.
 
-##Example
+## Example
 
 ```
 {
@@ -39,10 +39,10 @@ Used to create a table of data for a specific `rdfs:type` via a sparql query and
 }
 ```
 
-###sparqlConfig section
+## 'sparqlConfig' section
 Used to set some defaults and set the rdfs:type for the table.
 
-###Structure section
+## Structure section
 name: gives the variable used in the sparql query
 uri: Unique identifier for this value
 label: Add the label type, e.g. `"rdfs:label"`
@@ -57,5 +57,5 @@ optional: If can be missing values, include as optional with `y`
     }]
 ```
 
-###Filters section
+## Filters section
 Leave blank or remove to exclude filters
