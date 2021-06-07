@@ -100,6 +100,7 @@ populateTable = data => {
             Cell.appendChild(Text);
         }
     }
+    document.getElementById("loader").style.display = "none"
 };
 
 filterRows = (tr, data, column) => {
