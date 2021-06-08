@@ -97,6 +97,11 @@ populateTable = data => {
         for (j = 0; j < config.structure.length; j++) {
             let Cell = newRow.insertCell(j);
             let Text = document.createTextNode(data[i][config.structure[j].name]);
+            console.log([config.structure[j].name])
+            if([config.structure[j].name][0]=="machineReadableLicence"){
+                Text = document.createElement("p");
+                Text.innerHTML = data[i][config.structure[j].name]; 
+            }
             Cell.appendChild(Text);
         }
     }

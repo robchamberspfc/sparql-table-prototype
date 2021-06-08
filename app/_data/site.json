@@ -1,26 +1,21 @@
 {
-    "title": "Flood assets",
+    "title": "Licence",
     "feedback": "rob@swirrl.com",
     "introText": "This page shows a simple table based on a SPARQL query to PMD",
-    "tableTitle": "Assets",
-    "tableHeaders": ["Label","Purpose","Condition"],
-    "apiRoot": "https://defra-staging.publishmydata.com/linked-data/sparql?query=",
+    "tableTitle": "HTML test",
+    "tableHeaders": ["attributionStatement","machineReadableLicence"],
+    "apiRoot": "http://localhost:3001/v1/sparql/live?query=",
     "sparqlConfig": {
         "limit": "1000",
         "prefix": "prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>",
-        "rdfsType": "http://environment.data.gov.uk/asset-management/def/core/Asset"
+        "rdfsType": "http://environment.data.gov.uk/linked-data/licence"
     },
     "structure": [{
-        "name": "Label",
-        "uri": "http://www.w3.org/2000/01/rdf-schema#label"
-    },{
-        "name": "Purpose",
-        "uri": "http://environment.data.gov.uk/asset-management/def/core/primaryPurpose",
-        "label": "rdfs:label"
-    },{
-        "name": "Condition",
-        "uri": "http://environment.data.gov.uk/asset-management/def/core/calculatedCondition",
-        "label": "rdfs:label"
+        "name": "attributionStatement",
+        "uri": "http://environment.data.gov.uk/linked-data/definition/attributionStatement"
+    }, {
+        "name": "machineReadableLicence",
+        "uri": "http://environment.data.gov.uk/linked-data/definition/machineReadableLicence"
     }],
-    "filters": ["Purpose","Condition"]
+    "filters": ["machineReadableLicence"]
 }
