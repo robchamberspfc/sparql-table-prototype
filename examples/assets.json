@@ -6,7 +6,7 @@
     "tableHeaders": ["Label","Purpose","Condition"],
     "apiRoot": "https://defra-staging.publishmydata.com/linked-data/sparql?query=",
     "sparqlConfig": {
-        "limit": "1000",
+        "limit": "100",
         "prefix": "prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>",
         "rdfsType": "http://environment.data.gov.uk/asset-management/def/core/Asset"
     },

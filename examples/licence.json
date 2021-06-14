@@ -1,0 +1,21 @@
+{
+    "title": "Licence",
+    "feedback": "rob@swirrl.com",
+    "introText": "This page shows a simple table based on a SPARQL query to PMD",
+    "tableTitle": "HTML test",
+    "tableHeaders": ["attributionStatement","machineReadableLicence"],
+    "apiRoot": "http://localhost:3001/v1/sparql/live?query=",
+    "sparqlConfig": {
+        "limit": "1000",
+        "prefix": "prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>",
+        "rdfsType": "http://environment.data.gov.uk/linked-data/licence"
+    },
+    "structure": [{
+        "name": "attributionStatement",
+        "uri": "http://environment.data.gov.uk/linked-data/definition/attributionStatement"
+    }, {
+        "name": "machineReadableLicence",
+        "uri": "http://environment.data.gov.uk/linked-data/definition/machineReadableLicence"
+    }],
+    "filters": ["machineReadableLicence"]
+}

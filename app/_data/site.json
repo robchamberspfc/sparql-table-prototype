@@ -3,7 +3,7 @@
     "feedback": "rob@swirrl.com",
     "introText": "This page shows a simple table based on a SPARQL query to PMD",
     "tableTitle": "Assets",
-    "tableHeaders": ["Label","Purpose","Condition"],
+    "tableHeaders": ["Label","Condition"],
     "apiRoot": "https://defra-staging.publishmydata.com/linked-data/sparql?query=",
     "sparqlConfig": {
         "limit": "1000",
@@ -14,13 +14,9 @@
         "name": "Label",
         "uri": "http://www.w3.org/2000/01/rdf-schema#label"
     },{
-        "name": "Purpose",
-        "uri": "http://environment.data.gov.uk/asset-management/def/core/primaryPurpose",
-        "label": "rdfs:label"
-    },{
         "name": "Condition",
         "uri": "http://environment.data.gov.uk/asset-management/def/core/calculatedCondition",
         "label": "rdfs:label"
     }],
-    "filters": ["Purpose","Condition"]
+    "filters": ["Condition"]
 }
