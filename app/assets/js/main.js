@@ -15,7 +15,7 @@ fetch("/_data/site.json")
     })
 
 constructQuery = () => {
-    let selectRequest = "SELECT ";
+    let selectRequest = "SELECT DISTINCT";
     let whereRequest = "WHERE {?row ?p <" + config.sparqlConfig.rdfsType + "> .";
     let endRequest = "} ORDER BY asc (?" + config.structure[0].name + ") LIMIT " + config.sparqlConfig.limit;
     // TODO: Add option to limit by graph?
