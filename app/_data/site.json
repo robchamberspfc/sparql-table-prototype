@@ -1,22 +1,28 @@
 {
-    "title": "Flood assets",
+    "title": "Capital Projects",
     "feedback": "rob@swirrl.com",
     "introText": "This page shows a simple table based on a SPARQL query to PMD",
-    "tableTitle": "Assets",
-    "tableHeaders": ["Label","Condition"],
-    "apiRoot": "https://defra-staging.publishmydata.com/linked-data/sparql?query=",
+    "tableTitle": "Homes protected by Capital Projects",
+    "tableHeaders": ["Area", "Project", "Stage", "Homes protected"],
+    "apiRoot": "https://environment-test.data.gov.uk/linked-data/sparql?query=",
     "sparqlConfig": {
         "limit": "1000",
         "prefix": "prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>",
-        "rdfsType": "http://environment.data.gov.uk/asset-management/def/core/Asset"
+        "rdfsType": "http://environment.data.gov.uk/asset-management/def/capital-programme/CapitalProject"
     },
     "structure": [{
-        "name": "Label",
-        "uri": "http://www.w3.org/2000/01/rdf-schema#label"
-    },{
-        "name": "Condition",
-        "uri": "http://environment.data.gov.uk/asset-management/def/core/calculatedCondition",
+        "name": "Area",
+        "uri": "http://environment.data.gov.uk/water-quality/def/ea-org/area",
         "label": "rdfs:label"
+    }, {
+        "name": "Project",
+        "uri": "http://www.w3.org/2000/01/rdf-schema#label"
+    }, {
+        "name": "Stage",
+        "uri": "http://environment.data.gov.uk/asset-management/def/capital-programme/projectStage"
+    }, {
+        "name": "Homes",
+        "uri": "http://environment.data.gov.uk/asset-management/def/capital-programme/homesProtected"
     }],
-    "filters": ["Condition"]
+    "filters": ["Area", "Stage"]
 }
