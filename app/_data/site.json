@@ -1,7 +1,7 @@
 {
     "title": "Capital Projects",
     "feedback": "rob@swirrl.com",
-    "introText": "This page shows a simple table based on a SPARQL query to PMD",
+    "introText": "Demonstration of a simple table making use of the PublishMyData SPARQL endpoint",
     "tableTitle": "Homes protected by Capital Projects",
     "tableHeaders": ["Area", "Project", "Stage", "Homes protected"],
     "apiRoot": "https://environment-test.data.gov.uk/linked-data/sparql?query=",
