@@ -1,26 +1,38 @@
 {
-    "title": "Flood assets",
+    "title": "Flood Risk Management Plans",
     "feedback": "rob@swirrl.com",
-    "introText": "This page shows a simple table based on a SPARQL query to DEFRA PMD",
-    "tableTitle": "Assets",
-    "tableHeaders": ["Label","Purpose","Condition"],
-    "apiRoot": "https://environment-test.data.gov.uk/linked-data/sparql?query=",
+    "introText": "Summary of measures (actions) that are in the Flood Risk Management Plans to manage flood risk. Measures have been developed by Risk Management Authorities including the Environment Agency and Lead Local Flood Authorities.",
+    "tableTitle": "Measures summary",
+    "tableHeaders": ["Description","Status","Type","Scale","Timetable"],
+    "apiRoot": "http://localhost:3001/v1/sparql/live?query=",
     "sparqlConfig": {
         "limit": "10000",
         "prefix": "prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>",
-        "rdfsType": "http://environment.data.gov.uk/asset-management/def/core/Asset"
+        "rdfsType": "http://environment.data.gov.uk/flood-risk-planning/def/Measure"
     },
     "structure": [{
-        "name": "Label",
+        "name": "Description",
         "uri": "http://www.w3.org/2000/01/rdf-schema#label"
     },{
-        "name": "Purpose",
-        "uri": "http://environment.data.gov.uk/asset-management/def/core/primaryPurpose",
-        "label": "rdfs:label"
+        "name": "Status",
+        "uri": "http://environment.data.gov.uk/flood-risk-planning/def/implementationStatus",
+        "label": "rdfs:label",
+        "optional": "y"
     },{
-        "name": "Condition",
-        "uri": "http://environment.data.gov.uk/asset-management/def/core/calculatedCondition",
-        "label": "rdfs:label"
-    }],
-    "filters": ["Purpose","Condition"]
+        "name": "Type",
+        "uri": "http://environment.data.gov.uk/flood-risk-planning/def/typeOfWork",
+        "label": "rdfs:label",
+        "optional": "y"
+    },{
+        "name": "Scale",
+        "uri": "http://environment.data.gov.uk/flood-risk-planning/def/measureScale",
+        "label": "rdfs:label",
+        "optional": "y"
+    },{
+        "name": "Timetable",
+        "uri": "http://environment.data.gov.uk/flood-risk-planning/def/implementationTimescale",
+        "optional": "y"
+    }],  
+    "filters": ["Status","Type","Scale"],
+    "downloads": true
 }

@@ -12,44 +12,44 @@ fetch("/_data/site.json")
         constructQuery();
     }).catch(function (error) {
         console.log(error);
-    })
+    });
 
 constructQuery = () => {
-    let selectRequest = "SELECT DISTINCT";
+    let selectRequest = "SELECT DISTINCT ?row ";
     let whereRequest = "WHERE {?row ?p <" + config.sparqlConfig.rdfsType + "> .";
     let endRequest = "} ORDER BY asc (?" + config.structure[0].name + ") LIMIT " + config.sparqlConfig.limit;
     // TODO: Add option to limit by graph?
 
     for (j = 0; j < config.structure.length; j++) {
-        selectRequest = selectRequest + "?" + config.structure[j].name + " "
-    };
+        selectRequest = selectRequest + "?" + config.structure[j].name + " ";
+    }
 
     for (j = 0; j < config.structure.length; j++) {
         let optionalStart = " ";
         let optionalEnd = " ";
 
         if (config.structure[j].optional != null) {
-            optionalStart = " OPTIONAL { "
-            optionalEnd = "}"
+            optionalStart = " OPTIONAL { ";
+            optionalEnd = "}";
         }
 
         if (config.structure[j].label != null) {
-            whereRequest = whereRequest + optionalStart + "?row <" + config.structure[j].uri + "> ?" + config.structure[j].name + "URI . ?" + config.structure[j].name + "URI " + config.structure[j].label + " ?" + config.structure[j].name + optionalEnd + " ."
+            whereRequest = whereRequest + optionalStart + "?row <" + config.structure[j].uri + "> ?" + config.structure[j].name + "URI . ?" + config.structure[j].name + "URI " + config.structure[j].label + " ?" + config.structure[j].name + optionalEnd + " .";
         } else {
-            whereRequest = whereRequest + optionalStart + "?row <" + config.structure[j].uri + "> ?" + config.structure[j].name + optionalEnd + " ."
+            whereRequest = whereRequest + optionalStart + "?row <" + config.structure[j].uri + "> ?" + config.structure[j].name + optionalEnd + " .";
         }
-    };
+    }
 
     for (j = 0; j < config.filters.length; j++) {
-        let temp = config.structure
-        let index = temp.findIndex(temp => temp.name === config.filters[j]); 
+        let structure = config.structure;
+        let index = structure.findIndex(structure => structure.name === config.filters[j]);
         if (config.structure[index].label != null) {
-            filterWhere = " WHERE {?row ?p <" + config.sparqlConfig.rdfsType + "> ." + "?row <" + config.structure[index].uri + "> ?" + config.filters[j] + "URI . ?" + config.filters[j] + "URI " + config.structure[index].label + " ?" + config.filters[j] + " ."
+            filterWhere = " WHERE {?row ?p <" + config.sparqlConfig.rdfsType + "> ." + "?row <" + config.structure[index].uri + "> ?" + config.filters[j] + "URI . ?" + config.filters[j] + "URI " + config.structure[index].label + " ?" + config.filters[j] + " .";
         } else {
-            filterWhere = " WHERE {?row ?p <" + config.sparqlConfig.rdfsType + "> ." + "?row <" + config.structure[index].uri + "> ?" + config.filters[j] + " ."
+            filterWhere = " WHERE {?row ?p <" + config.sparqlConfig.rdfsType + "> ." + "?row <" + config.structure[index].uri + "> ?" + config.filters[j] + " .";
         }
-        filterRequest = encodeURIComponent(config.sparqlConfig.prefix + "SELECT DISTINCT ?" + config.filters[j] + filterWhere + "} LIMIT " + config.sparqlConfig.limit)
-        fetchFilters(filterRequest, config.filters[j])
+        filterRequest = encodeURIComponent(config.sparqlConfig.prefix + "SELECT DISTINCT ?" + config.filters[j] + filterWhere + "} LIMIT " + config.sparqlConfig.limit);
+        fetchFilters(filterRequest, config.filters[j]);
     }
 
     tableQuery = encodeURIComponent(config.sparqlConfig.prefix + selectRequest + whereRequest + endRequest);
@@ -119,11 +119,11 @@ filterTable = () => {
     for (i = 0; i < tr.length; i++) {
         tr[i].style.display = "";
     }
-    for (j = 0; j < config.filters.length; j++)  {
-        let selectMenu = document.getElementById("choose"+[config.filters[j]]);
+    for (j = 0; j < config.filters.length; j++) {
+        let selectMenu = document.getElementById("choose" + [config.filters[j]]);
         text = selectMenu.selectedOptions[0].text.toUpperCase();
-        if (text != "SELECT "+ config.filters[j].toUpperCase()) {
-            let temp = config.structure  
+        if (text != "SELECT " + config.filters[j].toUpperCase()) {
+            let temp = config.structure
             const index = temp.findIndex(temp => temp.name === config.filters[j]);
             filterRows(tr, text, index)
         }
@@ -150,8 +150,66 @@ fetchFilters = (filterQuery, filter) => {
 }
 
 populateSelect = (data, select) => {
-    let selectMenu = document.getElementById("choose"+[select]);
+    let selectMenu = document.getElementById("choose" + [select]);
     for (i = 0; i < data.length; i++) {
         selectMenu.options[selectMenu.options.length] = new Option(data[i], data[i]);
     }
 };
+
+constructDownloadQuery = () => {
+    //build query again in case we need to do anything differently for the download vs the table
+    let selectRequest = "SELECT DISTINCT";
+    let whereRequest = "WHERE {?row ?p <" + config.sparqlConfig.rdfsType + "> .";
+    let endRequest = "} ORDER BY asc (?" + config.structure[0].name + ") LIMIT " + config.sparqlConfig.limit;
+
+    for (j = 0; j < config.structure.length; j++) {
+        selectRequest = selectRequest + "?" + config.structure[j].name + " "
+    }
+
+    for (j = 0; j < config.structure.length; j++) {
+        let optionalStart = " ";
+        let optionalEnd = " ";
+
+        if (config.structure[j].optional != null) {
+            optionalStart = " OPTIONAL { "
+            optionalEnd = "}"
+        }
+
+        if (config.structure[j].label != null) {
+            whereRequest = whereRequest + optionalStart + "?row <" + config.structure[j].uri + "> ?" + config.structure[j].name + "URI . ?" + config.structure[j].name + "URI " + config.structure[j].label + " ?" + config.structure[j].name + optionalEnd + " ."
+        } else {
+            whereRequest = whereRequest + optionalStart + "?row <" + config.structure[j].uri + "> ?" + config.structure[j].name + optionalEnd + " ."
+        }
+    };
+
+    //find any filters that have been used
+    for (j = 0; j < config.filters.length; j++) {
+        let selectMenu = document.getElementById(`choose${[config.filters[j]]}`);
+        //add bind for each filter choice so we only return that vale
+        if (selectMenu.value != `Select ${[config.filters[j]]}`) {
+            replaceValue = "WHERE {"
+            replaceWith = `WHERE {BIND("${selectMenu.value}" AS ?${[config.filters[j]]})`
+            whereRequest = whereRequest.replace(replaceValue, replaceWith);
+        }
+    }
+
+    let url = config.apiRoot + encodeURIComponent(config.sparqlConfig.prefix + selectRequest + whereRequest + endRequest);
+
+    downloadCSV(url)
+}
+
+downloadCSV = (url) => {
+    let request = new XMLHttpRequest();
+    request.open("GET", url, true);
+    request.responseType = "blob";
+    request.onload = function () {
+        let blob = request.response;
+        let fileName = "download.csv"
+        let link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+    };
+
+    request.send();
+}
