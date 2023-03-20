@@ -1,28 +1,28 @@
 {
-    "title": "Capital Projects",
+    "title": "Flood plans",
     "feedback": "rob@swirrl.com",
-    "introText": "Demonstration of a simple table making use of the PublishMyData SPARQL endpoint",
-    "tableTitle": "Homes protected by Capital Projects",
-    "tableHeaders": ["Area", "Project", "Stage", "Homes protected"],
-    "apiRoot": "https://environment-test.data.gov.uk/linked-data/sparql?query=",
+    "introText": "",
+    "tableTitle": "Assets",
+    "tableHeaders": ["Description","Type","Scale"],
+    "apiRoot": "https://environment.data.gov.uk/linked-data/sparql?query=",
     "sparqlConfig": {
-        "limit": "1000",
+        "limit": "150",
         "prefix": "prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>",
-        "rdfsType": "http://environment.data.gov.uk/asset-management/def/capital-programme/CapitalProject"
+        "rdfsType": "http://environment.data.gov.uk/flood-risk-planning/def/Measure"
     },
     "structure": [{
-        "name": "Area",
-        "uri": "http://environment.data.gov.uk/water-quality/def/ea-org/area",
-        "label": "rdfs:label"
-    }, {
-        "name": "Project",
+        "name": "Description",
         "uri": "http://www.w3.org/2000/01/rdf-schema#label"
-    }, {
-        "name": "Stage",
-        "uri": "http://environment.data.gov.uk/asset-management/def/capital-programme/projectStage"
-    }, {
-        "name": "Homes",
-        "uri": "http://environment.data.gov.uk/asset-management/def/capital-programme/homesProtected"
-    }],
-    "filters": ["Area", "Stage"]
+    },{
+        "name": "Type",
+        "uri": "http://environment.data.gov.uk/flood-risk-planning/def/typeOfWork",
+        "label": "rdfs:label",
+        "optional": "y"
+    },{
+        "name": "Scale",
+        "uri": "http://environment.data.gov.uk/flood-risk-planning/def/measureScale",
+        "label": "rdfs:label",
+        "optional": "y"
+    }],  
+    "filters": ["Type","Scale"]
 }
